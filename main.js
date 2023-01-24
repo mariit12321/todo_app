@@ -46,8 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 新しいタスクを追加
 const todo = document.querySelector(".new__item");
-todo.addEventListener('keypress', () => {
-  const item = {};
+todo.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    const item = {};
   // 入力値の確認（空だったらアラート）
   if (todo.value != '') {
     item.todo = todo.value;
@@ -70,6 +71,7 @@ todo.addEventListener('keypress', () => {
   addItem(item);
   list.push(item);
   storage.todoList = JSON.stringify(list);
+  }
 });
 
 // addItemの処理
